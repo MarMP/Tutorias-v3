@@ -38,6 +38,9 @@ public class Alumnos implements IAlumnos {
 			do {
 				alumno = (Alumno) entrada.readObject();
 				insertar(alumno);
+				String[] cadenaExpediente = alumno.getExpediente().split("_");
+				String numeroExpediente = cadenaExpediente[2];
+				Alumno.identificadorFichero(Integer.parseInt(numeroExpediente));
 			} while (alumno != null);
 		} catch (ClassNotFoundException e) {
 			System.out.println("No puedo encontrar la clase que tengo que leer.");

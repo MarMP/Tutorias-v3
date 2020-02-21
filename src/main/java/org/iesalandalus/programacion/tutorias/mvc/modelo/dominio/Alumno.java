@@ -94,6 +94,10 @@ public class Alumno implements Serializable {
 	private static void incrementaUltimoIdentificador() {
 		ultimoIdentificador++;
 	}
+	
+	public static void identificadorFichero (int ultimoIdentificadorFichero) {
+		ultimoIdentificador = ultimoIdentificadorFichero;
+	}
 
 	private String getIniciales() {
 		String[] nombres = nombre.split(" "); 
