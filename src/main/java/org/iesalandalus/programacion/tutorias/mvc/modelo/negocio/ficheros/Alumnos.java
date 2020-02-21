@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ficheros;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,6 +10,7 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IAlumnos;
 
 public class Alumnos implements IAlumnos {
 
+	private static final String  NOMBRE_FICHERO_ALUMNOS = "datos/alumnos.dat";
 	private List<Alumno> coleccionAlumnos;
 
 	public Alumnos() {

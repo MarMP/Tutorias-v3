@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ficheros;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,6 +14,7 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ISesiones;
 
 public class Sesiones implements ISesiones {
 
+	private static final String  NOMBRE_FICHERO_SESIONES = "datos/sesiones.dat";
 	private List<Sesion> coleccionSesiones;
 
 	public Sesiones() {

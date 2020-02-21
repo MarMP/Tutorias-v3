@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ficheros;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,6 +15,7 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ICitas;
 
 public class Citas implements ICitas {
 
+	private static final String  NOMBRE_FICHERO_CITAS = "datos/citas.dat";
 	private List<Cita> coleccionCitas;
 
 	public Citas() {
