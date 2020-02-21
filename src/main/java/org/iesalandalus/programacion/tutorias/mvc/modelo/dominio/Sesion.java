@@ -1,12 +1,13 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Sesion {
+public class Sesion implements Serializable {
 	private static final LocalTime HORA_COMIENZO_CLASES = LocalTime.parse("16:00");
 	private static final LocalTime HORA_FIN_CLASES = LocalTime.parse("22:15");
 	public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");

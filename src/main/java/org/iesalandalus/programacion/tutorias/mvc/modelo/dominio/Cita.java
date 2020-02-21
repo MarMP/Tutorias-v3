@@ -1,10 +1,11 @@
 package org.iesalandalus.programacion.tutorias.mvc.modelo.dominio;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Cita {
+public class Cita implements Serializable{
 
 	private Alumno alumno;
 	private Sesion sesion;
