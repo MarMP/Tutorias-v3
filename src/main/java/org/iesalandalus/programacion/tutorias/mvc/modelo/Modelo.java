@@ -37,6 +37,25 @@ public class Modelo implements IModelo {
 	}
 
 	@Override
+	public void comenzar() {
+		alumnos.comenzar();
+		profesores.comenzar();
+		tutorias.comenzar();
+		sesiones.comenzar();
+		citas.comenzar();
+	}
+
+	@Override
+	public void terminar() {
+		alumnos.terminar();
+		profesores.terminar();
+		tutorias.terminar();
+		sesiones.terminar();
+		citas.terminar();
+
+	}
+
+	@Override
 	public void insertar(Alumno alumno) throws OperationNotSupportedException {
 		alumnos.insertar(alumno);
 	}
@@ -55,7 +74,7 @@ public class Modelo implements IModelo {
 		if (profesor == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el profesor de esta tutoría.");
 		}
-		tutorias.insertar(new Tutoria (profesor, tutoria.getNombre())); 
+		tutorias.insertar(new Tutoria(profesor, tutoria.getNombre()));
 	}
 
 	@Override
@@ -67,7 +86,8 @@ public class Modelo implements IModelo {
 		if (tutoria == null) {
 			throw new OperationNotSupportedException("ERROR: No existe la tutoría de esta sesión.");
 		}
-		sesiones.insertar(new Sesion (tutoria, sesion.getFecha(), sesion.getHoraInicio(),sesion.getHoraFin(),sesion.getMinutosDuracion()));
+		sesiones.insertar(new Sesion(tutoria, sesion.getFecha(), sesion.getHoraInicio(), sesion.getHoraFin(),
+				sesion.getMinutosDuracion()));
 	}
 
 	@Override
@@ -78,12 +98,12 @@ public class Modelo implements IModelo {
 		Alumno alumno = alumnos.buscar(cita.getAlumno());
 		if (alumno == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el alumno de esta cita.");
-		} 
+		}
 		Sesion sesion = sesiones.buscar(cita.getSesion());
 		if (sesion == null) {
 			throw new OperationNotSupportedException("ERROR: No existe la sesión de esta cita.");
-		} 
-		citas.insertar(new Cita(alumno, sesion, cita.getHora()));  
+		}
+		citas.insertar(new Cita(alumno, sesion, cita.getHora()));
 	}
 
 	@Override
@@ -113,8 +133,8 @@ public class Modelo implements IModelo {
 
 	@Override
 	public void borrar(Alumno alumno) throws OperationNotSupportedException {
-		List<Cita>citasAlumno = citas.get(alumno);
-		for(Cita cita: citasAlumno) {
+		List<Cita> citasAlumno = citas.get(alumno);
+		for (Cita cita : citasAlumno) {
 			citas.borrar(cita);
 		}
 		alumnos.borrar(alumno);
@@ -122,8 +142,8 @@ public class Modelo implements IModelo {
 
 	@Override
 	public void borrar(Profesor profesor) throws OperationNotSupportedException {
-		List<Tutoria>tutoriaProfesor = tutorias.get(profesor);
-		for(Tutoria tutoria : tutoriaProfesor) {
+		List<Tutoria> tutoriaProfesor = tutorias.get(profesor);
+		for (Tutoria tutoria : tutoriaProfesor) {
 			borrar(tutoria);
 		}
 		profesores.borrar(profesor);
@@ -131,8 +151,8 @@ public class Modelo implements IModelo {
 
 	@Override
 	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
-		List<Sesion>sesionesTutoria = sesiones.get(tutoria);
-		for(Sesion sesion: sesionesTutoria) {
+		List<Sesion> sesionesTutoria = sesiones.get(tutoria);
+		for (Sesion sesion : sesionesTutoria) {
 			borrar(sesion);
 		}
 		tutorias.borrar(tutoria);
@@ -140,7 +160,7 @@ public class Modelo implements IModelo {
 
 	@Override
 	public void borrar(Sesion sesion) throws OperationNotSupportedException {
-		List<Cita>citaSesion= citas.get(sesion);
+		List<Cita> citaSesion = citas.get(sesion);
 		for (Cita cita : citaSesion) {
 			citas.borrar(cita);
 		}
@@ -153,7 +173,7 @@ public class Modelo implements IModelo {
 	}
 
 	@Override
-	public List <Alumno> getAlumnos() {
+	public List<Alumno> getAlumnos() {
 		return alumnos.get();
 	}
 
@@ -179,11 +199,11 @@ public class Modelo implements IModelo {
 
 	@Override
 	public List<Sesion> getSesiones(Tutoria tutoria) {
-		return sesiones.get(tutoria); 
+		return sesiones.get(tutoria);
 	}
 
 	@Override
-	public List <Cita> getCitas() {
+	public List<Cita> getCitas() {
 		return citas.get();
 	}
 
