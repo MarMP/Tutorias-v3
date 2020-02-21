@@ -9,6 +9,10 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 
 public interface ITutorias {
 
+	void comenzar();
+
+	void terminar();
+
 	List<Tutoria> get();
 
 	List<Tutoria> get(Profesor profesor);
