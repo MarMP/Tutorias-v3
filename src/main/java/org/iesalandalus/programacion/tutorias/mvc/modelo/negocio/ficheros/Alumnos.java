@@ -33,6 +33,7 @@ public class Alumnos implements IAlumnos {
 
 	private void leer() {
 		File ficheroAlumnos = new File(NOMBRE_FICHERO_ALUMNOS);
+		int auxExpediente = 0;
 		try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(ficheroAlumnos))) {
 			Alumno alumno = null;
 			do {
@@ -40,13 +41,17 @@ public class Alumnos implements IAlumnos {
 				insertar(alumno);
 				String[] cadenaExpediente = alumno.getExpediente().split("_");
 				String numeroExpediente = cadenaExpediente[2];
-				Alumno.identificadorFichero(Integer.parseInt(numeroExpediente));
+				int expedienteFichero = Integer.parseInt(numeroExpediente);
+				if (expedienteFichero > auxExpediente) {
+					auxExpediente = expedienteFichero;
+				}
 			} while (alumno != null);
 		} catch (ClassNotFoundException e) {
 			System.out.println("No puedo encontrar la clase que tengo que leer.");
 		} catch (FileNotFoundException e) {
 			System.out.println("No puedo abrir el fihero de alumnos.");
 		} catch (EOFException e) {
+			Alumno.identificadorFichero(auxExpediente);
 			System.out.println("Fichero alumnos leído satisfactoriamente.");
 		} catch (IOException e) {
 			System.out.println("Error inesperado de Entrada/Salida.");
